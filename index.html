@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DAY — Calendar Tasks</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="brand">
+          <p class="brand-mark">DAY</p>
+          <p class="brand-sub">Office Calendar</p>
+        </div>
+        <div class="header-meta">
+          <p class="selected-label" id="selectedLabel"></p>
+          <button type="button" class="ghost-btn" id="jumpToday">오늘로</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="calendar-panel" aria-label="월간 캘린더">
+          <div class="calendar-nav">
+            <button type="button" class="nav-btn" id="prevMonth" aria-label="이전 달">
+              ‹
+            </button>
+            <h1 class="month-title" id="monthTitle"></h1>
+            <button type="button" class="nav-btn" id="nextMonth" aria-label="다음 달">
+              ›
+            </button>
+          </div>
+          <div class="weekday-row" aria-hidden="true">
+            <span>월</span><span>화</span><span>수</span><span>목</span>
+            <span>금</span><span>토</span><span>일</span>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </section>
+
+        <section class="task-panel" aria-label="할일 목록">
+          <div class="task-head">
+            <h2 class="task-date" id="taskDateTitle"></h2>
+            <p class="task-count" id="taskCount"></p>
+          </div>
+
+          <form class="task-form" id="taskForm">
+            <label class="sr-only" for="taskTitle">할일 제목</label>
+            <input
+              id="taskTitle"
+              name="title"
+              type="text"
+              maxlength="80"
+              placeholder="할일 제목"
+              autocomplete="off"
+              required
+            />
+            <label class="sr-only" for="taskPriority">우선순위</label>
+            <select id="taskPriority" name="priority">
+              <option value="normal">보통</option>
+              <option value="urgent">긴급</option>
+            </select>
+            <button type="submit" class="add-btn">추가</button>
+          </form>
+
+          <ul class="task-list" id="taskList"></ul>
+          <p class="empty-state" id="emptyState" hidden>이 날은 비어 있습니다.</p>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
