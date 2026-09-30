@@ -9,13 +9,18 @@
   <body>
     <div class="app">
       <header class="header">
-        <div class="brand">
-          <p class="brand-mark">DAY</p>
-          <p class="brand-sub">Office Calendar</p>
+        <div class="clock-bar">
+          <time id="liveClock" datetime="" aria-label="현재 시간"></time>
         </div>
-        <div class="header-meta">
-          <p class="selected-label" id="selectedLabel"></p>
-          <button type="button" class="ghost-btn" id="jumpToday">오늘로</button>
+        <div class="header-row">
+          <div class="brand">
+            <p class="brand-mark">DAY</p>
+            <p class="brand-sub">Office Calendar</p>
+          </div>
+          <div class="header-meta">
+            <p class="selected-label" id="selectedLabel"></p>
+            <button type="button" class="ghost-btn" id="jumpToday">오늘로</button>
+          </div>
         </div>
       </header>
 

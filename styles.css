@@ -61,12 +61,29 @@ button {
 }
 
 .header {
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.clock-bar {
+  margin-bottom: 28px;
+}
+
+#liveClock {
+  display: block;
+  font-size: 28px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.28em;
+  color: var(--green);
+  line-height: 1;
+}
+
+.header-row {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 24px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--line);
 }
 
 .brand-mark {
@@ -355,7 +372,7 @@ button {
     gap: 40px;
   }
 
-  .header {
+  .header-row {
     align-items: flex-start;
     flex-direction: column;
   }
@@ -374,6 +391,10 @@ button {
 }
 
 @media (max-width: 520px) {
+  #liveClock {
+    font-size: 22px;
+  }
+
   .app {
     padding: 28px 16px 56px;
   }

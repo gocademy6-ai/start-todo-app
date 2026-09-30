@@ -2,6 +2,7 @@ const STORAGE_KEY = "todo-app-tasks";
 const WEEKDAY_LABELS = ["일", "월", "화", "수", "목", "금", "토"];
 
 const els = {
+  liveClock: document.getElementById("liveClock"),
   monthTitle: document.getElementById("monthTitle"),
   calendarGrid: document.getElementById("calendarGrid"),
   selectedLabel: document.getElementById("selectedLabel"),
@@ -17,7 +18,7 @@ const els = {
   emptyState: document.getElementById("emptyState"),
 };
 
-const today = startOfDay(new Date());
+let today = startOfDay(new Date());
 let viewYear = today.getFullYear();
 let viewMonth = today.getMonth();
 let selectedDate = formatDate(today);
@@ -25,6 +26,13 @@ let tasks = loadTasks();
 
 function startOfDay(date) {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+function formatTime(date) {
+  const h = String(date.getHours()).padStart(2, "0");
+  const m = String(date.getMinutes()).padStart(2, "0");
+  const s = String(date.getSeconds()).padStart(2, "0");
+  return `${h}:${m}:${s}`;
 }
 
 function formatDate(date) {
@@ -228,6 +236,22 @@ els.taskForm.addEventListener("submit", (event) => {
   els.taskTitle.focus();
   render();
 });
+
+function tickClock() {
+  const now = new Date();
+  const clockText = formatTime(now);
+  els.liveClock.textContent = clockText;
+  els.liveClock.setAttribute("datetime", now.toISOString());
+
+  const todayIso = formatDate(startOfDay(now));
+  if (todayIso !== formatDate(today)) {
+    today = startOfDay(now);
+    render();
+  }
+}
+
+tickClock();
+setInterval(tickClock, 1000);
 
 render();
 els.taskTitle.focus();
